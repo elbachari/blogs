@@ -1,4 +1,3 @@
-import netlify from '@astrojs/netlify'
 import sitemap from '@astrojs/sitemap'
 import svelte from '@astrojs/svelte'
 import tailwind from '@astrojs/tailwind'
@@ -19,6 +18,7 @@ import { GithubCardComponent } from './src/plugins/rehype-component-github-card.
 import { parseDirectiveNode } from './src/plugins/remark-directive-rehype.js'
 import { remarkExcerpt } from './src/plugins/remark-excerpt.js'
 import { remarkReadingTime } from './src/plugins/remark-reading-time.mjs'
+
 const oklchToHex = str => {
   const DEFAULT_HUE = 250
   const regex = /-?\d+(\.\d+)?/g
@@ -38,8 +38,7 @@ export default defineConfig({
     tailwind(),
     swup({
       theme: false,
-      animationClass: 'transition-swup-',
-      // see https://swup.js.org/options/#animationselector
+      animationClass: 'transition-swup-', // see https://swup.js.org/options/#animationselector
       // the default value `transition-` cause transition delay
       // when the Tailwind class `transition-all` is used
       containers: ['main'],
@@ -144,6 +143,4 @@ export default defineConfig({
       },
     },
   },
-  output: 'server',
-  adapter: netlify(),
 })
